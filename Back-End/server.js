@@ -4,6 +4,7 @@ import cors from "cors";
 import productRouter from "./routes/productroute.js"
 import categoryRouter from "./routes/categoryroutes.js"
 import userRouter from "./routes/userroutes.js";
+import { errorHandler } from "./middlewares/errorHandler.js"
 import dotenv from 'dotenv';
 dotenv.config();
 const app = express();
@@ -11,7 +12,7 @@ const app = express();
 
 
 
-
+app.use(errorHandler);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(

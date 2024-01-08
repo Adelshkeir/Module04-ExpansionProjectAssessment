@@ -49,7 +49,7 @@ export const getOneProduct = asyncHandler(async (req, res) => {
 });
 
 export const createProduct = asyncHandler(async (req, res) => {
-  const image = req.file;
+
   const { title, description,price, supplier, categoryId } =
     req.body;
   if (
@@ -62,7 +62,7 @@ export const createProduct = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Cannot create product");
   }
-  const product = await Product.create({ ...req.body, image: image.path });
+  const product = await Product.create({ ...req.body });
   res.status(200).json(product);
 });
 
